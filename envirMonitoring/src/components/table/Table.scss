@@ -1,0 +1,19 @@
+.container{
+    font-family: monospace; 
+    min-width: 400px;
+    h2{
+        font-weight: 300;
+        font-size: 22px;
+    }
+    &__items{
+        &-item{
+        display: flex;
+        justify-content: space-between;
+        p{
+            font-weight: 200;
+            font-size: 18px;
+        }
+        
+        }
+    }
+}
