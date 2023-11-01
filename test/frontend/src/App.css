@@ -42,4 +42,21 @@ img{
   border: 1px solid rgb(171, 209, 242);
   color: #44e0d8;
 }
-
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+input{
+  width: 250px;
+  padding: 10px;
+  border: 1px solid gray;
+}
+.formButton{
+  border: none;
+  padding: 10px;
+  background-color: #ec8a52;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+}
