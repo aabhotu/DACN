@@ -7,13 +7,26 @@
     }
     &__items{
         &-item{
-        display: flex;
-        justify-content: space-between;
-        p{
-            font-weight: 200;
-            font-size: 18px;
-        }
-        
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            p{
+                font-weight: 200;
+                font-size: 18px;
+            }  
         }
     }
+}
+
+.tem{
+    background-color: #bde9f7;
+}
+.hum{
+    background-color: #ebf4f8;
+}
+.pre{
+    background-color: #bde9f7;
+}
+.dust{
+    background-color: #ebf4f8;
 }

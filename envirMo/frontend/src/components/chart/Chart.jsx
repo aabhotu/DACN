@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import {useEffect, useState} from 'react'
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -23,32 +25,62 @@ ChartJS.register(
 );
 
 const Chart = () => {
+
+    const [params, setParams] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () =>{
+            try{
+                const datas = await axios.get("http://localhost:8800/specifi")
+                console.log(datas.data)
+                setParams(datas.data)
+            }
+            catch(err){
+                console.log(err)
+            }
+        }
+        fetchData()
+    },[])
+    
+    const tems = []
+    const hums = []
+    const pres = []
+    const dusts = []
+
+    params.map(param => {
+        tems.push(param.tem)
+        hums.push(param.hudmi)
+        pres.push(param.press)
+        dusts.push(param.dust)
+    })
+    console.log(dusts)
+
     return (
         <div className='chart'>
             <Line
                 data={{
-                labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050],
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
                 datasets: [
                     {
-                    data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
+                    data: tems,
                     label: "Nhiệt độ",
                     borderColor: "#3e95cd",
                     fill: false
                     },
                     {
-                    data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267],
+                    data: hums,
                     label: "Độ ẩm",
                     borderColor: "#8e5ea2",
                     fill: false
                     },
                     {
-                    data: [168, 170, 178, 190, 203, 276, 408, 547, 675, 734],
+                    data: pres,
                     label: "Áp suất",
                     borderColor: "#3cba9f",
                     fill: false
                     },
                     {
-                    data: [40, 20, 10, 16, 24, 38, 74, 167, 508, 784],
+                    data: dusts,
                     label: "Nồng độ bụi mịn",
                     borderColor: "#e8c3b9",
                     fill: false
