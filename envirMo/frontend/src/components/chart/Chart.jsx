@@ -46,7 +46,7 @@ const Chart = () => {
     const hums = []
     const pres = []
     const dusts = []
-
+    let weekday
     params.map(param => {
         tems.push(param.tem)
         hums.push(param.hudmi)
@@ -59,7 +59,38 @@ const Chart = () => {
         <div className='chart'>
             <Line
                 data={{
-                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                labels: params.map(param => {
+                    const dateData = new Date(param.time)
+                    const date = dateData.getDay();
+                    
+                    switch (date) {
+                        case 0:
+                        weekday = 'Sunday';
+                        break;
+                        case 1:
+                        weekday = 'Monday';
+                        break;
+                        case 2:
+                        weekday = 'Tuesday';
+                        break;
+                        case 3:
+                        weekday = 'Wednesday';
+                        break;
+                        case 4:
+                        weekday = 'Thursday';
+                        break;
+                        case 5:
+                        weekday = 'Friday';
+                        break;
+                        case 6:
+                        weekday = 'Saturday';
+                        break;
+                        default:
+                        weekday = 'Undefined';
+                    }
+                    return weekday;
+
+                }),
                 datasets: [
                     {
                     data: tems,
