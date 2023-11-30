@@ -1,0 +1,23 @@
+.hourly{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4.781px;
+    img{
+        height: 33.47px;
+        width: 33.47px;
+    }
+    span{
+        color: #758FB8;
+        text-align: right;
+        font-variant-numeric: lining-nums proportional-nums;
+        font-feature-settings: 'cv01' on;
+        font-family: Inter;
+        font-size: 16.733px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 19.124px; /* 114.286% */
+        letter-spacing: 0.12px;
+    }
+}
