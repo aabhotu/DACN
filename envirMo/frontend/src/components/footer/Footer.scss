@@ -1,0 +1,115 @@
+.footer{
+    margin-top: 106px;
+    height: 120px;
+    flex-shrink: 0;
+    background: radial-gradient(77.71% 77.71% at 50% 56.87%, rgba(107, 175, 238, 0.60) 0%, rgba(107, 175, 238, 0.00) 100%);
+    display: flex;
+    justify-content: space-between;
+    &__left{
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding-left: 100px;
+        &-top{
+            margin-top: 11px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            img{
+                height: 40px;
+                width: 40px;
+            }
+            &-text{
+                color: rgba(41, 45, 50, 0.90);
+                font-family: BT Beau Sans;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                h4{
+                    margin: 4px;
+                }
+            }
+        }
+        &-bottom{
+            
+            align-items: flex-start;
+            gap: 8px;
+            p{
+                margin-top: -4px;
+                color: rgba(41, 45, 50, 0.84);
+                font-variant-numeric: lining-nums proportional-nums;
+                font-family: BT Beau Sans;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+    }
+    &__center{
+        &-icon{
+            align-items: flex-start;
+            margin-top: 28px;
+            display: inline-flex;
+            height: 37px;
+            justify-content: flex-end;
+            gap: 19.588px;
+            flex-shrink: 0;
+            img{
+                width: 37px;
+                height: 37px;
+                
+            }
+        }
+        &-decs{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 27px;
+            img{
+                width: 16px;
+                height: 16px;
+                flex-shrink: 0;
+                align-self: center;
+            }
+            span{
+                color: rgba(41, 45, 50, 0.84);
+                font-variant-numeric: lining-nums proportional-nums;
+                font-family: BT Beau Sans;
+                font-size: 10px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+    }
+    &__right{
+        margin-right: 100px;
+        display: inline-flex;
+        align-items: flex-start;
+        gap: 60px;
+        color: rgba(41, 45, 50, 0.84);
+
+        font-variant-numeric: lining-nums proportional-nums;
+        font-family: BT Beau Sans;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        &-one{
+            align-items: flex-start;
+            gap: 8px;
+        }
+        &-two{
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        p{
+            cursor: pointer;
+        }
+    }
+}
