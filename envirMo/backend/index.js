@@ -10,15 +10,15 @@ const db= mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'password',
-    database: 'dacn',
+    database: 'dtb_et',
 })
 
 app.get("/", (req, res) => {
     res.json("Thao ne")
 })
 
-app.get("/specifi",  (req, res) => {
-    const q = "SELECT * FROM specifi"
+app.get("/tbl_tracker",  (req, res) => {
+    const q = "SELECT * FROM tbl_tracker"
     db.query(q, (err, data) => {
         if (err) return res.json(err)
         return res.json(data)
