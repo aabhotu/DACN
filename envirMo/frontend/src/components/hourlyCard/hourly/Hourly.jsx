@@ -5,7 +5,7 @@ const Hourly = ({icon, time}) => {
     return (
         <div className='hourly'>
             <img src={icon} alt='icon'/>
-            <span>{time}</span>
+            <span>{time}:00</span>
         </div>
     );
 };

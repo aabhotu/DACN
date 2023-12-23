@@ -5,6 +5,7 @@
     display: flex;
     width: 1240px;
     // height: 120px;
+    //padding-top: 7px;
     padding: 23.904px var(--gaps-24, 28.685px) var(--gaps-22, 26.295px) var(--gaps-32, 38.247px);
     align-items: center;
     gap: var(--gaps-24, 28.685px);
@@ -14,5 +15,17 @@
     border: 1.195px solid var(--colours-lightblue-145, rgba(190, 220, 255, 0.55));
     background: #FFF;
     box-shadow: 0px 1.2px 12px 0px rgba(83, 117, 170, 0.15);
-    overflow: hidden;
+    overflow-x: scroll;
+    //overflow-y: hidden; 
+}
+
+.hourlyCard::-webkit-scrollbar{
+    width: 5px;
+}
+.hourlyCard::-webkit-scrollbar-track{
+    background: rgba(255,255,255,0);
+}
+.hourlyCard::-webkit-scrollbar-thumb{
+    background-color: rgba(255,255,255,0);
+    border-radius: 20px;
 }

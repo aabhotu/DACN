@@ -24,7 +24,7 @@ ChartJS.register(
     Legend
 );
 
-const Chart = () => {
+const Chart = ({dat, textData}) => {
 
     const [params, setParams] = useState([])
 
@@ -41,19 +41,7 @@ const Chart = () => {
         }
         fetchData()
     },[])
-    
-    const tems = []
-    const hums = []
-    const luxs = []
-    const dusts = []
-    let weekday
-    params.map(param => {
-        tems.push(param.temp)
-        hums.push(param.hud)
-        luxs.push(param.lux)
-        // dusts.push(param.dust)
-    })
-    console.log(luxs)
+
 
     return (
         <div className='chart'>
@@ -61,62 +49,21 @@ const Chart = () => {
                 data={{
                 labels: params.map(param => {
                     
-                    const dateData = new Date(param.tim)
+                            const dateData = new Date(param.tim)
 
-                    const hour = dateData.getHours()
-                    //console.log(dateData)
-
-                    //if (hour %2 ===0) return hour 
-                    return hour
-                    // const date = dateData.getDay();
-
+                            const hour = dateData.getHours()
+                            //if (hour %2 ===0) return hour
+                            return hour
                     
-                    // switch (date) {
-                    //     case 0:
-                    //     weekday = 'Sunday';
-                    //     break;
-                    //     case 1:
-                    //     weekday = 'Monday';
-                    //     break;
-                    //     case 2:
-                    //     weekday = 'Tuesday';
-                    //     break;
-                    //     case 3:
-                    //     weekday = 'Wednesday';
-                    //     break;
-                    //     case 4:
-                    //     weekday = 'Thursday';
-                    //     break;
-                    //     case 5:
-                    //     weekday = 'Friday';
-                    //     break;
-                    //     case 6:
-                    //     weekday = 'Saturday';
-                    //     break;
-                    //     default:
-                    //     weekday = 'Undefined';
-                    // }
-                    // return weekday;
 
-                }),
+                        }),
                 datasets: [
                     {
-                    data: tems,
-                    label: "Nhiệt độ",
-                    borderColor: "#3e95cd",
-                    fill: false
-                    },
-                    {
-                    data: hums,
-                    label: "Độ ẩm",
-                    borderColor: "#8e5ea2",
-                    fill: false
-                    },
-                    {
-                    data: luxs,
-                    label: "Áp suất",
-                    borderColor: "#3cba9f",
-                    fill: false
+                    data: dat,
+                    label: textData,
+                    borderColor: 'rgb(75, 192, 192)',
+                    fill: false,
+                    tension: 0.1
                     }
                 ]
                 }}
@@ -131,8 +78,6 @@ const Chart = () => {
                 }
                 }}
             />
-
-            {/* <Line options={options} data ={data}/> */}
         </div>
     );
 };

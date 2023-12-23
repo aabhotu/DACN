@@ -2,7 +2,6 @@ import React from 'react';
 import './Table.scss'
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import { format, parseISO, getDay, getDate } from 'date-fns';
 import temIcon from '../../assets/icons/precipitation.svg'
 import hudIcon from '../../assets/icons/precipitation (1).svg'
 import luxIcon from '../../assets/icons/fog.svg'
