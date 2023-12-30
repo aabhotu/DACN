@@ -1,6 +1,6 @@
 import React from 'react';
 import './Table.scss'
-import {useState, useEffect} from 'react';
+import {useState, useEffect, memo} from 'react';
 import axios from 'axios';
 import temIcon from '../../assets/icons/precipitation.svg'
 import hudIcon from '../../assets/icons/precipitation (1).svg'
@@ -22,7 +22,7 @@ const Table = () => {
             }
         }
         fetchData()
-    },[])
+    }, [])
 
     const dateNow = new Date()
     const dayNow = dateNow.getDay()
@@ -84,4 +84,4 @@ const Table = () => {
     );
 };
 
-export default Table;
+export default memo(Table);

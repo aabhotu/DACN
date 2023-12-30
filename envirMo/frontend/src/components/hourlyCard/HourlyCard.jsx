@@ -11,6 +11,7 @@ import sunDown from '../../assets/icons/sunDown.svg'
 import moonCloudRain from '../../assets/icons/moon-cloud-rain.svg'
 import moonCloud from '../../assets/icons/moon-cloud.svg'
 import moon from '../../assets/icons/moon.svg'
+import clouds from '../../assets/icons/cloud_1163624.png'
 
 
 function HourlyCard() {
@@ -32,60 +33,72 @@ function HourlyCard() {
 
     return (
         <div className='hourlyCard'>
-
-            { params.map(param => {
+        {params && 
+            params.map(param => {
                 const dateData = new Date(param.tim)
 
                 const hour = dateData.getHours()
+                const day = dateData.getDate()
+                const dateNow = new Date()
+                if (day === dateNow.getDate())
+                {
+                    if('rain' === param.stat && hour < 19){
+                        return (
+                            <Hourly icon = {rain} time = {hour}/>
+                        )
+                    }
+                    else if('clouds' === param.stat){
+                        return (
+                            <Hourly icon = {clouds} time = {hour}/>
+                        )
+                    }
+                    else if('rainy' === param.stat){
+                        return (
+                            <Hourly icon = {rainy} time = {hour}/>
+                        )
+                    }
+                    else if('thunder' === param.stat){
+                        return (
+                            <Hourly icon = {thunder} time = {hour}/>
+                        )
+                    }
+                    else if('sunCloudRain' === param.stat){
+                        return (
+                            <Hourly icon = {sunCloudRain} time = {hour}/>
+                        )
+                    }
+                    else if('sunDown' === param.stat){
+                        return (
+                            <Hourly icon = {sunDown} time = {hour}/>
+                        )
+                    }
+                    else if('rain' === param.stat && hour >=19){
+                        return (
+                            <Hourly icon = {moonCloudRain} time = {hour}/>
+                        )
+                    }
+                    else if('moonCloud' === param.stat){
+                        return (
+                            <Hourly icon = {moonCloud} time = {hour}/>
+                        )
+                    }
+                    else if ('clear' === param.stat && hour >19){
+                        return (
+                            <Hourly icon = {moon} time = {hour}/>
+                        )
+                    }
+                    else {
+                        return (
+                            <Hourly icon = {moon} time = {hour}/>
+                        )
+                    }
+                }
                 
-                if('rain' === param.stat){
-                    return (
-                        <Hourly icon = {rain} time = {hour}/>
-                    )
-                }
-                else if('rainy' === param.stat){
-                    return (
-                        <Hourly icon = {rainy} time = {hour}/>
-                    )
-                }
-                else if('thunder' === param.stat){
-                    return (
-                        <Hourly icon = {thunder} time = {hour}/>
-                    )
-                }
-                else if('sunCloudRain' === param.stat){
-                    return (
-                        <Hourly icon = {sunCloudRain} time = {hour}/>
-                    )
-                }
-                else if('sunDown' === param.stat){
-                    return (
-                        <Hourly icon = {sunDown} time = {hour}/>
-                    )
-                }
-                else if('moonCloudRain' === param.stat){
-                    return (
-                        <Hourly icon = {moonCloudRain} time = {hour}/>
-                    )
-                }
-                else if('moonCloud' === param.stat){
-                    return (
-                        <Hourly icon = {moonCloud} time = {hour}/>
-                    )
-                }
-                else if ('moon' === param.stat){
-                    return (
-                        <Hourly icon = {moon} time = {hour}/>
-                    )
-                }
-                else {
-                    return (
-                        <Hourly icon = {moon} time = {hour}/>
-                    )
-                }
                 
                 })
-            }
+            
+        }
+            
         </div>
     );
 };

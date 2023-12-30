@@ -24,6 +24,7 @@ ChartJS.register(
     Legend
 );
 
+
 const Chart = ({dat, textData}) => {
 
     const [params, setParams] = useState([])
@@ -40,7 +41,8 @@ const Chart = ({dat, textData}) => {
             }
         }
         fetchData()
-    },[])
+    }, [])
+
 
 
     return (
@@ -52,8 +54,14 @@ const Chart = ({dat, textData}) => {
                             const dateData = new Date(param.tim)
 
                             const hour = dateData.getHours()
-                            //if (hour %2 ===0) return hour
-                            return hour
+                            const day = dateData.getDate()
+                            const month = dateData.getMonth()
+                            const year = dateData.getYear()
+                            const dateNow = new Date()
+                            // console.log(dateNow.getDate(), "--", day)
+                            if (day === dateNow.getDate() && month === dateNow.getMonth() && year === dateNow.getYear()) 
+                                return hour
+                            // return hour
                     
 
                         }),
@@ -63,18 +71,28 @@ const Chart = ({dat, textData}) => {
                     label: textData,
                     borderColor: 'rgb(75, 192, 192)',
                     fill: false,
-                    tension: 0.1
+                    tension: 0.1,
                     }
                 ]
                 }}
                 options={{
-                title: {
-                    display: true,
-                    text: "World population per region (in millions)"
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        // text: 'Chart.js Line Chart',
+                    },
                 },
-                legend: {
-                    display: true,
-                    position: "bottom"
+                scales: {
+                    x: {
+                        min: 0,
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
                 }
                 }}
             />
