@@ -12,29 +12,30 @@ import moonCloudRain from '../../assets/icons/moon-cloud-rain.svg'
 import moonCloud from '../../assets/icons/moon-cloud.svg'
 import moon from '../../assets/icons/moon.svg'
 import clouds from '../../assets/icons/cloud_1163624.png'
+import cloudyDay from '../../assets/icons/cloudy-day.png'
 
 
-function HourlyCard() {
+function HourlyCard(props) {
 
-    const [params, setParams] = useState([])
+    // const [params, setParams] = useState([])
 
-    useEffect(() => {
-        const fetchData = async () =>{
-            try{
-                const datas = await axios.get("http://localhost:8800/tbl_tracker")
-                setParams(datas.data)
-            }
-            catch(err){
-                console.log(err)
-            }
-        }
-        fetchData()
-    },[])
+    // useEffect(() => {
+    //     const fetchData = async () =>{
+    //         try{
+    //             const datas = await axios.get("http://localhost:8800/tbl_tracker")
+    //             setParams(datas.data)
+    //         }
+    //         catch(err){
+    //             console.log(err)
+    //         }
+    //     }
+    //     fetchData()
+    // },[])
 
     return (
         <div className='hourlyCard'>
-        {params && 
-            params.map(param => {
+        {props.params && 
+            props.params.map(param => {
                 const dateData = new Date(param.tim)
 
                 const hour = dateData.getHours()
@@ -85,6 +86,11 @@ function HourlyCard() {
                     else if ('clear' === param.stat && hour >19){
                         return (
                             <Hourly icon = {moon} time = {hour}/>
+                        )
+                    }
+                    else if ('clear' === param.stat && hour <19){
+                        return (
+                            <Hourly icon = {cloudyDay} time = {hour}/>
                         )
                     }
                     else {

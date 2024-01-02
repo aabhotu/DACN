@@ -5,33 +5,40 @@ import {useEffect, useState} from 'react'
 import Chart from '../chart/Chart.jsx';
 import Table from '../table/Table.jsx';
 
-const Content = () => {
+const Content = ({params}) => {
+    // const [params, setParams] = useState([])
 
-    const [params, setParams] = useState([])
+    // useEffect(() => {
+    //     const fetchData = async () =>{
+    //         try{
+    //             const datas = await axios.get("http://localhost:8800/tbl_tracker")
+    //             setParams(datas.data)
+    //         }
+    //         catch(err){
+    //             console.log(err)
+    //         }
+    //     }
+    //     fetchData()
+    // },[])
+    const [tems, setTems] = useState([])
+    const [hums, setHums] = useState([])
+    const [luxs, setluxs] = useState([])
 
-    useEffect(() => {
-        const fetchData = async () =>{
-            try{
-                const datas = await axios.get("http://localhost:8800/tbl_tracker")
-                setParams(datas.data)
-            }
-            catch(err){
-                console.log(err)
-            }
-        }
-        fetchData()
-    },[])
-    
-    const tems = []
-    const hums = []
-    const luxs = []
-   
-    params.map(param => {
-        tems.push(param.temp)
-        hums.push(param.hud)
-        luxs.push(param.lux)
-       
-    })
+    useEffect(() =>{
+        const temsTemp = []
+        const humsTemp = []
+        const luxsTemp = []
+
+        params.map(param => {
+            temsTemp.push(param.temp)
+            humsTemp.push(param.hud)
+            luxsTemp.push(param.lux)
+           
+        })
+        setTems(temsTemp);
+        setHums(humsTemp);
+        setluxs(luxsTemp);
+    },[params])
 
     return (
         <div className='content'>
@@ -42,9 +49,9 @@ const Content = () => {
             <div className='content__bottom'>
                 <Table/>
                 <div className='content__bottom-chart'>
-                    <Chart dat = {tems} textData= {"Nhiệt độ"}/>
-                    <Chart dat = {hums} textData= {"Độ ẩm"}/>
-                    <Chart dat = {luxs} textData= {"Cường độ ánh sáng"}/>
+                    <Chart dat = {tems} textData= {"Nhiệt độ"} params={params}/>
+                    <Chart dat = {hums} textData= {"Độ ẩm"} params={params}/>
+                    <Chart dat = {luxs} textData= {"Cường độ ánh sáng"} params={params}/>
                 </div>
             </div>
         </div>

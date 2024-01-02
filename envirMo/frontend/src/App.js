@@ -3,8 +3,9 @@ import Chart from './components/chart/Chart.jsx';
 import Table from './components/table/Table.jsx';
 import Header from './components/header/Header.jsx';
 import HourlyCard from './components/hourlyCard/HourlyCard.jsx';
-import Content from './components/content/Content.jsx';
+// import Content from './components/content/Content.jsx';
 import Footer from './components/footer/Footer.jsx';
+import ParentContent from './components/parent_content/ParentContent.jsx'
 
 function App() {
   return (
@@ -12,8 +13,7 @@ function App() {
       <div className='App_header'>
         <Header />
       </div>
-      <HourlyCard/>
-      <Content/>
+      <ParentContent/>
       <Footer/>
     </div>
   );

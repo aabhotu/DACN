@@ -25,25 +25,7 @@ ChartJS.register(
 );
 
 
-const Chart = ({dat, textData}) => {
-
-    const [params, setParams] = useState([])
-
-    useEffect(() => {
-        const fetchData = async () =>{
-            try{
-                const datas = await axios.get("http://localhost:8800/tbl_tracker")
-                //console.log(datas.data)
-                setParams(datas.data)
-            }
-            catch(err){
-                console.log(err)
-            }
-        }
-        fetchData()
-    }, [])
-
-
+const Chart = ({dat, textData, params}) => {
 
     return (
         <div className='chart'>
@@ -76,24 +58,25 @@ const Chart = ({dat, textData}) => {
                 ]
                 }}
                 options={{
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            // text: 'Chart.js Line Chart',
+                        },
                     },
-                    title: {
-                        display: true,
-                        // text: 'Chart.js Line Chart',
-                    },
-                },
-                scales: {
-                    x: {
-                        min: 0,
-                    },
-                    y: {
-                        beginAtZero: true
+                    scales: {
+                        x: {
+                            min: 0,
+                            beginAtZero: true,
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
                     }
-                }
                 }}
             />
         </div>
